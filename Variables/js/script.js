@@ -20,3 +20,21 @@ let $function = "Recruiter";
 // Constant are declared with uppercase naming convention
 const PI = 3.1415;
 console.log(PI);
+
+// Javascript Data Types are either Objects or Primitive
+
+// It has & Primitive data types
+let age = 23;
+console.log(typeof(age));
+let bestFruit = "Banana";
+console.log(typeof(bestFruit));
+let teenager = true;
+console.log(typeof(teenager));
+let friend;
+console.log(typeof(friend));
+let address = "";
+console.log(typeof(address));
+
+favoriteMeal = "Mafe";
+
+
