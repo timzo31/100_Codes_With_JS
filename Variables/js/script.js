@@ -194,6 +194,7 @@ if(age == 18) { // === Strict equal operator, doesn't perform type coercion.
     console.log('You just became an adult :D (loose)');
 }
 
+/*
 const favNumber = Number(prompt("What's your favourite number ?"));
 console.log(typeof favNumber, favNumber);
 
@@ -208,9 +209,36 @@ if(favNumber === 23) { // '23' == 23
 } else {
     console.log('Number is not 23 or 6.');
 }
-
+*/
 
 ////////////// BOOLEAN LOGIC: AND, OR, NOT OPERATORS /////////////////
-if(favNumber != 23 || favNumber !=6) {
-    console.log('Why not 23 or 6?');
+// if(favNumber != 23 || favNumber !=6) {
+//     console.log('Why not 23 or 6?');
+// }
+
+const hasDriversLicense = true;
+const hasGoodVision = true;
+const isTired = false;
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+if(shouldDrive && !isTired) {
+    console.log('Sarah is able to drive!');
+} else {
+    console.log('Someone else should drive!');
+}
+
+//////////////// CHALLENGE #3 ///////////////////
+const scoreDolphins = (96 + 108 + 99) / 3; // 96, 112, 101
+const scoreKoalas = (88 + 91 + 110) / 3; // 109, 95, 123
+console.log(scoreDolphins, scoreKoalas);
+
+if(scoreDolphins > scoreKoalas && scoreDolphins >= 100) {
+    console.log(`Dolphins win the Trophy.`);
+} else if(scoreDolphins < scoreKoalas && scoreKoalas >= 100) {
+    console.log(`Koalas win the Trophy.`);
+} else if(scoreDolphins === scoreKoalas && scoreDolphins >= 100 && scoreKoalas >= 100) {
+    console.log(`Both win the Trophy.`);
+} else {
+    console.log('No one wins the Trophy.')
 }
