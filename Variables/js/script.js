@@ -132,3 +132,29 @@ if (markBMI > johnBMI) {
     console.log(`John's (${johnBMI}) BMI is higher than mark's (${markBMI})`);
 }
 
+
+///////////////// TYPE CONVERSION AND COERCION ////////////////
+// JavaScript only converts to 3 types: Number, String and Boolean
+
+// Type conversion
+const inputYear = '1993';
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+console.log(Number('TIMERA'));
+console.log(typeof NaN);
+
+console.log(String(23), 23);
+
+// Type coercion
+console.log('I am ' + 23 + ' year old.');
+console.log('23' - '10' - 3 ); // string are converted to numbers = 10
+console.log('23' / '2'); // string are converted to numbers = 11.5
+console.log('23' * '2' ); // string are converted to numbers = 46
+console.log('23' + '10' + 3 ); // no coversion in this case = 23103
+
+let n = '1' + 1; // '11'
+n = n - 1; // 11 - 1 = 10
+console.log(n); // 10
+
+
