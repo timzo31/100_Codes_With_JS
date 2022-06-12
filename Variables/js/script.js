@@ -37,7 +37,7 @@ console.log(typeof(address));
 
 let favoriteMeal = "Mafe";
 
-const bithYear = 1993;
+const birthYear = 1993;
 
 // Var declaration: old way of declaring a variable before ES6
 // let is blocks code, while var is function code 
@@ -46,9 +46,9 @@ var job = "programmer";
 ////////////// OPERATORS ///////////////////
 // Allows to combine values
 // Assignment Operators
-const now = 2037;
+const now = 2022;
 const sarahAge = now - 2001;
-const myAge = now - bithYear;
+const myAge = now - birthYear;
 console.log(myAge, sarahAge);
 
 console.log(myAge*2, sarahAge/2, 2**3);
@@ -70,7 +70,7 @@ console.log(x);
 console.log(myAge > sarahAge);
 console.log(sarahAge >= 18);
 
-const isFullAge = sarahAge >= 40;
+const isFullAge = sarahAge >= 22;
 console.log(isFullAge);
 
 
@@ -105,7 +105,30 @@ console.log(markHigherBMI);
 firstname = "Mamadou";
 lastName = "TIMERA";
 profession = "Student"
-console.log(`My name is ${lastName} ${firstname}, and I am ${2022 - bithYear} years old. I am a ${profession} at CQUPT.`);
+console.log(`My name is ${lastName} ${firstname}, and I am ${2022 - birthYear} years old. I am a ${profession} at CQUPT.`);
 
 console.log(firstname[0]);
+
+
+///////////// IF STATEMENTS /////////////////////
+if (sarahAge >= 18) {
+    console.log(`Sarah can start driving license.`);
+} else {
+    console.log(`Sarah is too young.`);
+}
+
+let century;
+if (birthYear <= 2000) { 
+    century = 20;
+} else {
+    century = 21;
+}
+console.log(century);
+
+////////////// CHALLENGE #2 ////////////////////
+if (markBMI > johnBMI) {
+    console.log(`mark's (${markBMI}) BMI is higher than John's (${johnBMI})`);
+} else {
+    console.log(`John's (${johnBMI}) BMI is higher than mark's (${markBMI})`);
+}
 
