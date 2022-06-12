@@ -24,8 +24,8 @@ console.log(PI);
 // Javascript Data Types are either Objects or Primitive
 
 // It has & Primitive data types
-let age = 23;
-console.log(typeof(age));
+let currentAge = 23;
+console.log(typeof(currentAge));
 let bestFruit = "Banana";
 console.log(typeof(bestFruit));
 let teenager = true;
@@ -35,6 +35,40 @@ console.log(typeof(friend));
 let address = "";
 console.log(typeof(address));
 
-favoriteMeal = "Mafe";
+let favoriteMeal = "Mafe";
 
+const bithYear = 1993;
 
+// Var declaration: old way of declaring a variable before ES6
+// let is blocks code, while var is function code 
+var job = "programmer";
+
+////////////// OPERATORS ///////////////////
+// Allows to combine values
+// Assignment Operators
+const now = 2037;
+const sarahAge = now - 2001;
+const myAge = now - bithYear;
+console.log(myAge, sarahAge);
+
+console.log(myAge*2, sarahAge/2, 2**3);
+console.log(myAge, ' years old; ', sarahAge+ ' years old.');
+
+// Maths Operators
+let x = 10 + 5; // x = 10 + 5
+console.log(x);
+x += 10; // x + 10 => 15 + 10 = 25
+console.log(x);
+x *= 4; // 25 * 4 = 100
+console.log(x);
+x++; // x + 1 = 101
+console.log(x);
+x--; // x - 1 = 100
+console.log(x);
+
+// Comparison Operators
+console.log(myAge > sarahAge);
+console.log(sarahAge >= 18);
+
+const isFullAge = sarahAge >= 40;
+console.log(isFullAge)
