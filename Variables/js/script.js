@@ -71,4 +71,33 @@ console.log(myAge > sarahAge);
 console.log(sarahAge >= 18);
 
 const isFullAge = sarahAge >= 40;
-console.log(isFullAge)
+console.log(isFullAge);
+
+
+///////////////// OPERATORS PRECEDENCE  ////////////////////////
+// Refer to MDN Operator Precedence
+let y, z;
+y = z = 25 - 10 - 5;
+console.log(y, z);
+
+const avgAge = ((myAge + sarahAge) / 2);
+console.log(avgAge);
+
+////////// CHALLENGE #1 ///////////////
+// const markHeight = 1.69;
+// const markWeight = 78;
+// const johnHeight = 1.95;
+// const johnWeight = 92;
+const markHeight = 95;
+const markWeight = 1.88;
+const johnHeight = 85;
+const johnWeight = 1.76;
+
+const markBMI = markWeight / (markHeight ** 2);
+const johnBMI = johnWeight / (johnHeight * johnHeight);
+console.log(markBMI, johnBMI);
+
+const markHigherBMI = (markBMI > johnBMI);
+console.log(markHigherBMI);
+
+
