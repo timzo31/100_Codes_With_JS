@@ -242,3 +242,39 @@ if(scoreDolphins > scoreKoalas && scoreDolphins >= 100) {
 } else {
     console.log('No one wins the Trophy.')
 }
+
+
+//////////////// SWITCH STATEMENTS //////////////////
+const day = "Monday";
+
+switch(day) {
+    case 'Monday': 
+        console.log('Plan course structure');
+        console.log('Go to coding meetup');
+        break;
+    case 'Tuesday': 
+        console.log('Prepare theory videos');
+        break;
+    case 'Wednesday': 
+    case 'Thursday': 
+        console.log('Write code examples');
+        break;
+    case 'Friday': 
+        console.log('record videos');
+        break;
+    case 'Saturday': 
+    case 'Sunday':
+        console.log('Enjoy weekends :D');
+        break;
+    default:
+        console.log('Not a valid day!');
+}
+
+
+
+
+
+
+
+
+
