@@ -101,3 +101,11 @@ const markHigherBMI = (markBMI > johnBMI);
 console.log(markHigherBMI);
 
 
+////////////// STRING ///////////////////
+firstname = "Mamadou";
+lastName = "TIMERA";
+profession = "Student"
+console.log(`My name is ${lastName} ${firstname}, and I am ${2022 - bithYear} years old. I am a ${profession} at CQUPT.`);
+
+console.log(firstname[0]);
+
