@@ -158,3 +158,59 @@ n = n - 1; // 11 - 1 = 10
 console.log(n); // 10
 
 
+//////////// TRUTHY AND FALSY VALUES ////////////////////////
+// % falsy values: 0, '', undefined, null, NaN
+
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean('TIMERA'));
+console.log(Boolean({}));
+console.log(Boolean(''));
+
+const money = 0;
+if (money) {
+    console.log(`Don't spend it all!`);
+}
+else {
+    console.log(`You should get a job!`);
+}
+
+let height;
+if(height) {
+    console.log('Yay!  Height is defined');
+} else {
+    console.log('Height is UNDEFINED');
+}
+
+
+////////////////// EQUALITY OPERATORS ////////////////////////
+
+const age = '18';
+if(age === 18) { // === Strict equal operator, doesn't perform type coercion.
+    console.log('You just became an adult :D (strict)');
+}
+
+if(age == 18) { // === Strict equal operator, doesn't perform type coercion.
+    console.log('You just became an adult :D (loose)');
+}
+
+const favNumber = Number(prompt("What's your favourite number ?"));
+console.log(typeof favNumber, favNumber);
+
+if(favNumber == 23) { // '23' == 23
+    console.log('Cool! 23 is an amazing number!');
+}
+
+if(favNumber === 23) { // '23' == 23
+    console.log('Cool! 23 is an amazing number! (strict)');
+} else if(favNumber === 6) {
+    console.log('Cool! 6 is also an amazing number! (strict)');
+} else {
+    console.log('Number is not 23 or 6.');
+}
+
+
+////////////// BOOLEAN LOGIC: AND, OR, NOT OPERATORS /////////////////
+if(favNumber != 23 || favNumber !=6) {
+    console.log('Why not 23 or 6?');
+}
