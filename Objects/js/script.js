@@ -61,7 +61,7 @@ console.log(timera.age);
 // Challenge
 console.log(timera.getSummary());
 
-////////////// CHALLENGE #1 /////////////////////
+////////////// CODING CHALLENGE #1 /////////////////////
 const john = {
     firstName: "John",
     lastName: "Smith",
@@ -89,3 +89,34 @@ const mark = {
 console.log(`${(john.calcBMI() > mark.calcBMI()) ? `${john.firstName}'s BMI (${john.calcBMI()}) is higher than ${mark.firstName}'s BMI (${mark.calcBMI()}).` : `${mark.firstName}'s BMI (${mark.calcBMI()}) is higher than ${john.firstName}'s BMI (${john.calcBMI()}).`}`);
 
 
+///////////////////// CODING CHALLENGE #2: OBJECTS&ARRAYS///////////////////////////
+const bills = [50, 105, 120, 350, 500, 300, 450, 230, 48, 555];
+let tips = [];
+let totals = [];
+
+const calcTip = function (bill) {
+    return (bill >= 50 && bill <= 300) ? bill * .15 : bill * .2;
+} 
+
+
+for (let i = 0; i < bills.length; i ++) {
+    const tip = calcTip(bills[i]);
+    tips.push(tip);
+    //tips.push(calcTip(bills[i]));
+    totals = tip + bills[i];
+}
+console.log(bills, tips, totals);
+
+
+const calcAverage = function(arr) {
+    let sum = 0
+    
+    for(let i = 0; i < arr.length; i ++) {
+        sum = sum + arr[i];
+        //sum += arr[i];
+    }
+    return sum / arr.length;
+}
+
+console.log(calcAverage(bills));
+console.log(calcAverage(tips));
