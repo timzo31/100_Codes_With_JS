@@ -55,3 +55,59 @@ console.log(bills, tips);
 
 const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 console.log(totals);
+
+////////////////////// ITERATION /////////////////////////
+
+// for loop keeps running while the condition is TRUE. 
+for(let rep=1; rep <= 10; rep ++) {
+    console.log(`lifting weights repetition ${rep}`);
+}
+
+// Looping arrays, Breaking and Continuing
+const timeraArr = [
+    "Mamadou",
+    "timera",
+    2023 - 1993,
+    "Student",
+    ["Niouma", "Moatassim", "Solo", "Diallo", "Youssef"],
+    true
+];
+
+let types = [];
+
+for(let i=0; i < timeraArr.length; i ++) {
+    // Reading from timeraArr array
+    console.log(timeraArr[i]);
+
+    // Filling from timeraArr array
+    //types[i] = typeof timeraArr[i];
+    types.push(typeof timeraArr[i]);
+}
+console.log(types);
+
+const yearsArr = [1991, 1993, 2001, 2004];
+const ages = [];
+
+for(let i=0; i < years.length; i ++) {
+    ages.push(2023 - years[i]);
+}
+console.log(ages);
+
+// Continue and break
+console.log("----------- ONLY STRINGS ------------")
+for(let i=0; i < timeraArr.length; i ++) {
+    if (typeof timeraArr[i] !== 'string')
+        continue;
+        
+   console.log(timeraArr[i], typeof timeraArr[i]);
+}
+
+console.log("----------- BREAK WITH NUMBER ------------")
+for(let i=0; i < timeraArr.length; i ++) {
+    if (typeof timeraArr[i] !== 'string')
+        continue;
+        
+   console.log(timeraArr[i], typeof timeraArr[i]);
+}
+
+
