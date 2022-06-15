@@ -7,9 +7,25 @@ const timFriends = ["Niouma", "Moatassim", "Solo", "Diallo", "Youssef"];
 const timera = {
     firstName: "Mamadou",
     lastName: "TIMERA",
-    age: 28,
+    birthYear: 1993,
     profession: "Student",
     friends: timFriends,
+    hasDriverLicense: true,
+
+    // Needs a function expression to work
+    // calcAge: function() {
+    //     return 2023 - this.birthYear;
+    // }
+
+    calcAge: function() {
+        this.age = 2023 - this.birthYear;
+        return this.age;
+    },
+
+    getSummary: function(){
+        console.log(`${this.lastName} is a ${this.calcAge()} year old ${this.profession}, and he ${this.hasDriverLicense ? 'has ' : 'does not have '} a driver license.`);
+
+    }
 };
 
 console.log(timera.lastName); // access the lastname using dot notation
@@ -19,14 +35,14 @@ const namekey = "Name";
 console.log(timera['last' + namekey]);
 console.log(timera['first' + namekey]);
 
-const interestedIn = prompt('What do you want to know about Timera ? Choose between firstName, lastName, age, friends and profession');
+/*const interestedIn = prompt('What do you want to know about Timera ? Choose between firstName, lastName, age, friends and profession');
 
 if(timera[interestedIn]) {
     console.log(timera[interestedIn]);
 } else {
     console.log("Wrong request! Choose between firstName, lastName, age, friends and profession.");
 }
-
+*/
 timera['email'] = "tims30@gmail.com";
 timera['location'] = "China";
 console.log(timera);
@@ -35,8 +51,41 @@ console.log(`${timera.lastName} has ${timera['friends'].length}, and his best fr
 
 console.log(`${timera.lastName} has ${timera.friends.length}, and his best friend is called ${timera.friends[0]}.`);
 
+console.log(timera.calcAge());
+//console.log(timera['calcAge'](1993));
 
+console.log(timera.age);
+console.log(timera.age);
+console.log(timera.age);
 
+// Challenge
+console.log(timera.getSummary());
 
+////////////// CHALLENGE #1 /////////////////////
+const john = {
+    firstName: "John",
+    lastName: "Smith",
+    height: 1.95,
+    weight: 92,
+
+    calcBMI: function() {
+        this.bmi = this.weight / (this.height**2);
+        return this.bmi;
+    }
+}
+
+const mark = {
+    firstName: "Mark",
+    lastName: "Miller",
+    height: 1.69,
+    weight: 78,
+
+    calcBMI: function() {
+        this.bmi = this.weight / (this.height**2);
+        return this.bmi;
+    }
+}
+
+console.log(`${(john.calcBMI() > mark.calcBMI()) ? `${john.firstName}'s BMI (${john.calcBMI()}) is higher than ${mark.firstName}'s BMI (${mark.calcBMI()}).` : `${mark.firstName}'s BMI (${mark.calcBMI()}) is higher than ${john.firstName}'s BMI (${john.calcBMI()}).`}`);
 
 
