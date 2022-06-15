@@ -110,4 +110,34 @@ for(let i=0; i < timeraArr.length; i ++) {
    console.log(timeraArr[i], typeof timeraArr[i]);
 }
 
+// Looping Backwards
+for(let i=timeraArr.length-1; i >= 0; i --){
+    console.log(i, timeraArr[i]);
+}
 
+// Loops in loop
+for(let ex=1; ex < 4; ex ++){
+    console.log(`---------- Starting exercise ${ex}`);
+
+    for (let rep=1; rep < 6; rep ++) {
+        console.log(`Exercise ${ex} Lifting weight repetition ${rep}`);
+    }
+}
+
+// WHILE loop: it's more versatile than the for loop
+console.log('----------- While Loop ------------')
+let rep = 1;
+while (rep <= 5) {
+    console.log(`Lifting weight repetition ${rep}.`);
+    rep ++;
+}
+
+// Roll a dice until we get a 6.
+let dice = Math.trunc(Math.random() * 6) + 1;
+console.log(dice);
+
+while(dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+    if (dice === 6) console.log("Loop is about to end...");
+}
