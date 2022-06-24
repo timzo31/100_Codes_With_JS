@@ -49,6 +49,11 @@ header p {
   font-family: "Press Start 2P", sans-serif;
   padding: 1rem 1.5rem;
   border-radius: 1rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgba(#cde60c, 0.5);
 }
 
 .again {
