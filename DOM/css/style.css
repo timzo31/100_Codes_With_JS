@@ -94,12 +94,21 @@ header {
   background-color: rgba(#fff, 0.5);
 }
 
-.search {
+.search input {
   /* position: absolute; */
+  color: #333;
+  padding: 0.5rem 1rem;
+  background-color: rgba(231, 247, 212, 0.746);
+}
+
+.search input:focus {
+  color: #fff;
+  background-color: rgb(140, 244, 13);
 }
 
 .fa-search {
   content: "\002";
+  color: #fff;
 }
 
 .nav {
