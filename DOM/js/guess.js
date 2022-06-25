@@ -1,9 +1,9 @@
 "use strict";
 
-const message = document.querySelector(".message");
+let message = document.querySelector(".message");
 let score = document.querySelector(".score");
-const highscore = document.querySelector(".highscore");
-const number = document.querySelector(".number");
+let highscore = document.querySelector(".highscore");
+let number = document.querySelector(".number");
 const guess = document.querySelector(".guess");
 const check = document.querySelector(".check");
 const again = document.querySelector(".again");
@@ -15,7 +15,11 @@ let score_ = 20; // State variable
 score.textContent = score_;
 let highscoreSet = 0;
 
-check.addEventListener("click", function (e) {
+const displayMessage = function (mess) {
+  message.textContent = mess;
+};
+
+/*check.addEventListener("click", function (e) {
   e.preventDefault();
 
   // When there is no input
@@ -59,7 +63,42 @@ check.addEventListener("click", function (e) {
     }
   }
 });
+*/
+///////////////// DRY CODE /////////////////////
 
+check.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  // When there is no input
+  if (!guess.value) {
+    displayMessage("No number!");
+  }
+  // When the secretNumber is equal to the input number
+  else if (guess.value == secretNumber) {
+    mdisplayMessage("Correct Number!");
+    document.body.style.backgroundColor = "#3f8";
+    number.textContent = secretNumber;
+    number.style.width = "30rem";
+    number.style.backgroundColor = "#fff";
+    number.style.color = "#000";
+
+    if (score_ > highscoreSet) {
+      highscoreSet = score_;
+      highscore.textContent = highscoreSet;
+    }
+  }
+  // When is wrong
+  else if (guess.value !== secretNumber) {
+    if (score_ > 1) {
+      displayMessage(guess.value > secretNumber ? "Too high!" : "Too low!");
+      score_--;
+      score.textContent = score_;
+    } else {
+      displayMessage("You lost the game !");
+      score.textContent = 0;
+    }
+  }
+});
 /////////////// CHALENGE #1 //////////////
 again.addEventListener("click", function () {
   score_ = 20;
@@ -67,6 +106,6 @@ again.addEventListener("click", function () {
   score.textContent = score_;
   document.body.style.backgroundColor = "#222";
   number.textContent = "?";
-  message.textContent = "Start guessing...";
+  displayMessage("Start guessing...");
   guess.value = "";
 });
