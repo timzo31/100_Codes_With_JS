@@ -13,6 +13,7 @@ console.log(secretNumber);
 
 let score_ = 20; // State variable
 score.textContent = score_;
+let highscoreSet = 0;
 
 check.addEventListener("click", function (e) {
   e.preventDefault();
@@ -27,6 +28,13 @@ check.addEventListener("click", function (e) {
     document.body.style.backgroundColor = "#3f8";
     number.textContent = secretNumber;
     number.style.width = "30rem";
+    number.style.backgroundColor = "#fff";
+    number.style.color = "#000";
+
+    if (score_ > highscoreSet) {
+      highscoreSet = score_;
+      highscore.textContent = highscoreSet;
+    }
   }
   // When the input number is too high
   else if (guess.value > secretNumber) {
@@ -52,11 +60,12 @@ check.addEventListener("click", function (e) {
   }
 });
 
-again.addEventListener("click", function (e) {
-  e.preventDefault();
-
-  secretNumber;
-  document.body.style.backgroundColor = "#000";
+/////////////// CHALENGE #1 //////////////
+again.addEventListener("click", function () {
+  score_ = 20;
+  let secretNumber = Math.trunc(Math.random() * 20) + 1;
+  score.textContent = score_;
+  document.body.style.backgroundColor = "#222";
   number.textContent = "?";
   message.textContent = "Start guessing...";
   guess.value = "";
