@@ -13,6 +13,108 @@ html {
 
 body {
   font: size 1.6rem;
+  font-family: sans-serif, "Lucida";
   background: linear-gradient(275deg, #c0028a, #fa036a, #b00396);
-  /* position: relative; */
+}
+
+main {
+  position: relative;
+  margin: 10rem auto;
+  width: 70%;
+  height: 80%;
+  /* padding: 3rem 1rem 5rem 1rem; */
+  background-color: rgba(241, 184, 184, 0.696);
+  backdrop-filter: blur(3px);
+  border-radius: 1rem;
+  box-shadow: 0 2rem 3rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+section {
+  width: 49.7%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.player--0 {
+  background-color: rgba(255, 255, 255, 0.319);
+  z-index: 5;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.player--1 {
+  background-color: rgba(171, 4, 113, 0.243);
+  z-index: 5;
+}
+
+.name {
+  font-size: 3.5rem;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  padding: 2rem 3rem;
+  margin: 4rem auto 1rem auto;
+}
+
+.score {
+  font-size: 5rem;
+  font-family: sans-serif;
+  color: #940137;
+  font-weight: bold;
+  margin-bottom: 12rem;
+}
+
+.current {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 10rem;
+  width: 15rem;
+  background-color: #940137;
+  margin: 0 auto 3rem auto;
+  border-radius: 1rem;
+}
+
+.current-label {
+  text-transform: uppercase;
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.current-score {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.btn {
+  background-color: rgba(#fff, 0.8);
+  border: none;
+  outline: none;
+  border-radius: 3rem;
+  padding: 1rem 1.5rem;
+  text-transform: uppercase;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn--new {
+  top: 3%;
+}
+
+.btn--roll {
+  bottom: 15%;
+  margin-bottom: 2rem;
+}
+
+.btn--hold {
+  bottom: 10%;
+}
+
+.dice {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
