@@ -37,7 +37,7 @@ section {
 }
 
 .player--active {
-  background-color: rgba(255, 255, 255, 0.543);
+  background-color: rgba(255, 255, 255, 0.751);
 }
 
 .player--winner {

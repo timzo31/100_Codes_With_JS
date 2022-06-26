@@ -1,7 +1,7 @@
 const activePlayer_ = document.querySelector(".player--active");
 
 const player0 = document.querySelector(".player--0");
-const player1 = document.querySelector(".player--0");
+const player1 = document.querySelector(".player--1");
 const name0 = document.getElementById("name--0");
 const score0 = document.getElementById("score--0");
 const current0 = document.getElementById("current--0");
@@ -16,14 +16,30 @@ const btnHold = document.querySelector(".btn--hold");
 const btnRoll = document.querySelector(".btn--roll");
 const btnNew = document.querySelector(".btn--new");
 
-score0.textContent = 0;
-score1.textContent = 0;
-diceEl.classList.add("hidden");
+let scores, currentScore, activePlayer, playing;
 
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true;
+const init = function () {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  score0.textContent = 0;
+  score1.textContent = 0;
+  current0.textContent = 0;
+  current1.textContent = 0;
+
+  // document
+  //   .querySelector(`.player--${activePlayer}`)
+  //   .classList.remove("player--winner");
+  diceEl.classList.add("hidden");
+  player0.classList.remove("player--winner");
+  player1.classList.remove("player--winner");
+  player0.classList.add("player--active");
+  player1.classList.remove("player--active");
+};
+
+init();
 
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -34,11 +50,7 @@ const switchPlayer = function () {
   player1.classList.toggle("player--active").classList.remove("player--winner");
 };
 
-btnNew.addEventListener("click", function () {
-  score0.textContent = 0;
-  score1.textContent = 0;
-  diceEl.classList.add("hidden");
-});
+btnNew.addEventListener("click", init);
 
 // Rolling the dice functionality
 btnRoll.addEventListener("click", function () {
@@ -75,7 +87,7 @@ btnHold.addEventListener("click", function () {
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
     // 2. Check if the player's score is >= 100
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 100) {
       // Finish the game
       diceEl.classList.add("hidden");
       playing = false;
