@@ -36,14 +36,27 @@ section {
   text-align: center;
 }
 
+.player--active {
+  background-color: rgba(255, 255, 255, 0.543);
+}
+
+.player--winner {
+  background-color: #2f2f2f;
+}
+
+.player--winner .name {
+  font-weight: 700;
+  color: #c7365f;
+}
+
 .player--0 {
-  background-color: rgba(255, 255, 255, 0.319);
+  /* background-color: rgba(255, 255, 255, 0.319); */
   z-index: 5;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 .player--1 {
-  background-color: rgba(171, 4, 113, 0.243);
+  /* background-color: rgba(171, 4, 113, 0.243); */
   z-index: 5;
 }
 
@@ -97,6 +110,13 @@ section {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 1rem 2rem 0.7rem rgbargba(238, 135, 221, 0.2);
+  cursor: pointer;
+}
+
+.btn:active {
+  /* transform: translateY(-3px); */
 }
 
 .btn::first-letter {
@@ -120,9 +140,13 @@ section {
 
 .dice {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
   width: 5rem;
   height: 5rem;
+}
+
+.hidden {
+  display: none;
 }
