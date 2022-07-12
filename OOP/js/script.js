@@ -36,7 +36,7 @@ mike.calcAge();
 ////////////////////////////////////
 /////////// CHALLENGE #3 ///////////
 ////////////////////////////////////
-
+/*
 const Car = function (make, speed) {
   this.speed = speed;
   this.make = make;
@@ -83,7 +83,7 @@ console.log(tesla);
 tesla.accelerate();
 tesla.brake();
 tesla.accelerate();
-
+*/
 ////////////////////////////////////
 ////// INHERITANCE IN ES6 //////////
 ////////////////////////////////////
@@ -273,20 +273,24 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
 
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   _approveLoan(val) {
     return true;
+    return this;
   }
 
   requestLoan(val) {
     if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
+      return this;
     }
   }
 
@@ -312,6 +316,73 @@ acc1._approveLoan(1000);
 console.log(acc1.getMovements());
 console.log(acc1);
 console.log(acc1.getMovements());
+Account.helper();
 
 //console.log(acc1.#approveLoan(100));
-Account.helper();
+
+// Chaining
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+
+console.log(acc1.getMovements());
+
+//////////////////////////////////////////////////     CHALLENGE #4      /////////
+/////////////////////////////////////////
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    ths.speed += 10;
+    console.log(`${this.make} is going at ${this.speed}km/h`);
+    return this;
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed}km/h`);
+    return this;
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+}
+
+class EVCl extends CarCl {
+  #charge;
+
+  constructor(make, speed, charge) {
+    super();
+  }
+
+  chargeBattery(chargeTo) {
+    this.charge = chargeTo;
+    return this;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h, with a charge of ${
+        this.#charge
+      }`
+    );
+    return this;
+  }
+}
+
+const rivian = new EVCl("Rivian, 150, 23");
+console.log(rivian);
+
+rivian
+  .accelerate()
+  .accelerate()
+  .accelerate()
+  .brake()
+  .chargeBattery(50)
+  .accelerate();
+
+console.log(rivian.speedUS);
