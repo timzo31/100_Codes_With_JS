@@ -79,3 +79,30 @@ const transformer = function (str, fn) {
 
 transformer("JavaScript is the best!", upperFirstWord);
 transformer("Javascript is the best ! ", oneWorld);
+
+// JS uses callback all the time
+const high5 = function () {
+	console.log("Hi");
+};
+document.body.addEventListener("click", high5);
+["Mamadou", "Daouda", "Ismaila"].forEach(high5);
+
+////////////////////////////////////////
+///// FUNCTION RETURNING FUNCTIONS /////
+
+const greet = function (greeting) {
+	return function (name) {
+		console.log(`${greeting} ${name}`);
+	};
+};
+
+const greeterHey = greet("Hey");
+greeterHey("TIMERA");
+greeterHey("Steven");
+
+greet("Hello")("Timera");
+const greetArr = (greeting) => (name) => {
+	console.log(`${greeting} ${name}`);
+};
+
+greetArr("Salut")("Mamadou");
