@@ -39,9 +39,9 @@ const checkIn = function (flightNum, passenger) {
 	passenger.name = "Mr." + passenger.name;
 
 	if (passenger.passport === 2034256745) {
-		alert("Checked in");
+		//alert("Checked in");
 	} else {
-		alert("wrong passport");
+		//alert("wrong passport");
 	}
 };
 
@@ -56,3 +56,26 @@ const newPassport = function (person) {
 newPassport(timera);
 console.log(timera);
 checkIn(flight, timera);
+
+////////////////////////////////////////
+/////// FUNCTIONS ACCEPTING CALLBACK FUNCTIONS ///////
+
+const oneWorld = function (str) {
+	return str.replace(/ /g, "").toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+	const [first, ...others] = str.split(" ");
+	return [first.toUpperCase(), ...others].join(" ");
+};
+
+// Higher order function
+const transformer = function (str, fn) {
+	console.log(`Original string: ${str}`);
+	console.log(`Tansformed string: ${fn(str)}`);
+
+	console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer("JavaScript is the best!", upperFirstWord);
+transformer("Javascript is the best ! ", oneWorld);
