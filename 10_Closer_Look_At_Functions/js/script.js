@@ -345,3 +345,8 @@ boardPassengers(180, 3);
 		header.style.color = "blue";
 	});
 })();
+
+// let number = 1;
+// console.log(number++);
+// console.log(++number);
+// console.log(number);
