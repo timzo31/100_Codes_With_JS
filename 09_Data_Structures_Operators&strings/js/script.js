@@ -12,6 +12,10 @@ const restaurant = {
 	starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
 	mainMenu: ["Pizza", "Pasta", "Risotto"],
 
+	order: function (starterIndex, mainIndex) {
+		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+	},
+
 	openingHours: {
 		thu: {
 			open: 12,
@@ -27,3 +31,43 @@ const restaurant = {
 		},
 	},
 };
+
+const arr = [2, 3, 4];
+// const a = arr[0];
+// const b = arr[1];
+// const c = arr[2];
+
+// Array Destructuring uses alway const declaration
+const [x, y, z] = arr;
+console.log(x, y, z);
+console.log(arr);
+
+let [first, , second] = restaurant.categories;
+console.log(first, second);
+const [cat, ...others] = restaurant.categories;
+console.log([cat, ...others]);
+
+// const temp = first;
+// first = second;
+// second = temp;
+// console.log(first, second);
+
+// Switching (Re-assigning) using array destructuring
+[first, second] = [second, first];
+console.log(first, second);
+
+// Receive 2 return values from a function
+const [starter, main] = restaurant.order(2, 0);
+console.log(starter, main);
+
+const nested = [2, 4, [5, 6]];
+
+// const [i, , j] = nested;
+// console.log(i, j);
+
+const [i, , [j, k]] = nested;
+console.log(i, j, k);
+
+// Default values
+const [p = 1, q = 1, r = 1] = [8, 9];
+console.log(p, q, r);
