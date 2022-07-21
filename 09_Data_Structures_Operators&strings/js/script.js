@@ -67,9 +67,22 @@ restaurant.orderDelivery({
 });
 
 ////////////////////////////////////////////////////////
-////////////   SHORT CIRCUITING (&& AND ||)  ///////////
+///////////  THE NULLISH COALESCING OPERATORS  /////////
 ////////////////////////////////////////////////////////
 
+restaurant.numGuests = 0;
+
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+// Nullish: null and undefined (NOT 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
+////////////////////////////////////////////////////////
+////////////   SHORT CIRCUITING (&& AND ||)  ///////////
+////////////////////////////////////////////////////////
+/*
 console.log("--------- OR ----------");
 // Use ANY data type, return ANY data type, Short-circuiting
 console.log(3 || "TIMERA");
@@ -82,6 +95,8 @@ console.log(undefined || 0 || "" || "Hello" || 23 || null);
 const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
 
 console.log(guests1);
+
+restaurant.numGuests = 0;
 
 const guest2 = restaurant.numGuests || 10;
 console.log(guest2);
@@ -98,6 +113,7 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
+*/
 
 ////////////////////////////////////////////////////////
 ////////////    REST PATTERN & PARAMETERS    ///////////
