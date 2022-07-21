@@ -47,6 +47,11 @@ const restaurant = {
 			`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
 		);
 	},
+
+	orderPizza: function (mainIngredient, ...otherIngredients) {
+		console.log(mainIngredient);
+		console.log(otherIngredients);
+	},
 };
 
 restaurant.orderDelivery({
@@ -62,10 +67,50 @@ restaurant.orderDelivery({
 });
 
 ////////////////////////////////////////////////////////
-////////////    THE SPREAD OPERATORS    ////////////////
+////////////    REST PATTERN & PARAMETERS    ///////////
+///////////////    PACKING ARRAYS     //////////////////
+
+// SPREAD, because of RIGHT hand side =
+const arr = [1, 2, ...[3, 4]];
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, ...others);
+
+const [pizza, , risotto, ...otherFood] = [
+	...restaurant.mainMenu,
+	...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// 2) Functions
+const add = function (...numbers) {
+	let sum = 0;
+	for (let i = 0; i < numbers.length; i++) {
+		sum += numbers[i];
+	}
+	console.log(sum);
+};
+
+add(2, 3);
+add(5, 4, 6, 6);
+add(1, 4, 6, 23, 45, 5, 9, 10);
+
+const x = [23, 5, 7];
+add(...x);
+
+restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
+
+restaurant.orderPizza("mushrooms");
+
 ////////////////////////////////////////////////////////
+////////////    THE SPREAD OPERATORS    ////////////////
+///////////////    UNPACK ARRAY     ///////////////////
 
 // unpacking all the array elements at once
+/*
 const arr = [7, 8, 10];
 const newArr = [1, 2, ...arr];
 console.log(newArr);
@@ -104,7 +149,7 @@ console.log(letters);
 	prompt(`Ingredient 3? `),
 ];
 console.log(ingredients);
-restaurant.orderPasta(...ingredients);*/
+restaurant.orderPasta(...ingredients); ///*
 
 // Objects
 const newRestaurant = { foundedIn: 1998, ...restaurant, founder: "TIMERA" };
@@ -113,6 +158,7 @@ console.log(newRestaurant);
 const restaurantCopy2 = { ...restaurant };
 restaurantCopy2.name = "Timera Ristorente";
 console.log(restaurantCopy2);
+*/
 
 ////////////////////////////////////////////////////////
 ////////////    DESTRUCTURING OBJECTS    ///////////////
