@@ -67,9 +67,42 @@ restaurant.orderDelivery({
 });
 
 ////////////////////////////////////////////////////////
+////////////   SHORT CIRCUITING (&& AND ||)  ///////////
+////////////////////////////////////////////////////////
+
+console.log("--------- OR ----------");
+// Use ANY data type, return ANY data type, Short-circuiting
+console.log(3 || "TIMERA");
+console.log("" || "TIMERA");
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || "" || "Hello" || 23 || null);
+
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+
+console.log(guests1);
+
+const guest2 = restaurant.numGuests || 10;
+console.log(guest2);
+
+console.log("--------- AND ----------");
+console.log(0 && "Jonas");
+console.log(7 && "Jonas");
+console.log("Jonas" && true);
+
+console.log("Hello" && 23 && null && "Jonas");
+
+if (restaurant.orderPizza) {
+	restaurant.orderPizza("mushrooms", "spinach");
+}
+
+restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
+
+////////////////////////////////////////////////////////
 ////////////    REST PATTERN & PARAMETERS    ///////////
 ///////////////    PACKING ARRAYS     //////////////////
-
+/*
 // SPREAD, because of RIGHT hand side =
 const arr = [1, 2, ...[3, 4]];
 const [a, b, ...others] = [1, 2, 3, 4, 5];
@@ -104,6 +137,7 @@ add(...x);
 restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
 
 restaurant.orderPizza("mushrooms");
+*/
 
 ////////////////////////////////////////////////////////
 ////////////    THE SPREAD OPERATORS    ////////////////
