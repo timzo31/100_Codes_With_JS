@@ -11,7 +11,7 @@ const openingHours = {
 		open: 12,
 		close: 22,
 	},
-	fri: {
+	[weekdays[5]]: {
 		open: 11,
 		close: 23,
 	},
@@ -54,22 +54,48 @@ const restaurant = {
 	},
 };
 
-restaurant.orderDelivery({
-	time: "22:30",
-	address: "Via del Solde, 21",
-	mainIndex: 2,
-	starterIndex: 2,
-});
+// restaurant.orderDelivery({
+// 	time: "22:30",
+// 	address: "Via del Solde, 21",
+// 	mainIndex: 2,
+// 	starterIndex: 2,
+// });
 
-restaurant.orderDelivery({
-	address: "Via del Sole, 21",
-	starterIndex: 1,
-});
+// restaurant.orderDelivery({
+// 	address: "Via del Sole, 21",
+// 	starterIndex: 1,
+// });
 
 ////////////////////////////////////////////////////////
-////////////   ENHANCED OBJECT LITTERALS    ////////////
+////////////      OPTIONAL CHAINING (?.)    ////////////
 ////////////////////////////////////////////////////////
+if (restaurant.openingHours && restaurant.openingHours.mon)
+	console.log(restaurant.openingHours.mon.open);
 
+// WITH Optional Chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+// Example
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+for (const day of days) {
+	const open = restaurant.openingHours[day]?.open ?? "closed";
+	console.log(`On ${day}, we open at ${open}`);
+}
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? "Method does not exist");
+console.log(restaurant.orderRisotto?.(0, 1) ?? "Method does not exist");
+
+// Arrays
+const users = [
+	{
+		name: "Timera",
+		email: "madty31@timdev.com",
+	},
+];
+
+console.log(users[0]?.name ?? "User array empty");
 ////////////////////////////////////////////////////////
 /////////// LOOPING ARRAYS:The For-Of Loop   ///////////
 ////////////////////////////////////////////////////////
@@ -170,7 +196,7 @@ team1 > team2 && console.log("Team 1 is more likely to win");
 ////////////////////////////////////////////////////////
 ///////////    LOGICAL ASSIGNMENT OPERATORS  ///////////
 ////////////////////////////////////////////////////////
-
+/*
 const rest1 = {
 	name: "Capri",
 	numGuests: 20,
@@ -201,7 +227,7 @@ rest2.owner &&= "<Anonymous>";
 
 console.log(rest1);
 console.log(rest2);
-
+*/
 ////////////////////////////////////////////////////////
 ///////////  THE NU LLISH COALESCING OPERATORS  /////////
 ////////////////////////////////////////////////////////
