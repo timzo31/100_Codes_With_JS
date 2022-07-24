@@ -67,9 +67,25 @@ restaurant.orderDelivery({
 });
 
 ////////////////////////////////////////////////////////
-///////////       CODING CHALLENGE N°1       ///////////
+/////////// LOOPING ARRAYS:The For-Of Loop   ///////////
 ////////////////////////////////////////////////////////
 
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) {
+	console.log(item);
+}
+
+for (const [i, el] of menu.entries()) {
+	console.log(`${i + 1}: ${el}`);
+}
+
+//console.log([...menu.entries()]);
+
+////////////////////////////////////////////////////////
+///////////       CODING CHALLENGE N°1       ///////////
+////////////////////////////////////////////////////////
+/*
 const game = {
 	team1: "Barcelona",
 	team2: "Real Madrid",
@@ -145,6 +161,8 @@ printGoals(...game.scored);
 team1 < team2 && console.log("Team 2 is more likely to win");
 
 team1 > team2 && console.log("Team 1 is more likely to win");
+*/
+
 ////////////////////////////////////////////////////////
 ///////////    LOGICAL ASSIGNMENT OPERATORS  ///////////
 ////////////////////////////////////////////////////////
