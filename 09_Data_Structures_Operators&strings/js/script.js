@@ -69,7 +69,7 @@ const restaurant = {
 ////////////////////////////////////////////////////////
 /// LOOPING OBJECTS: Object Keys, Values and Entries ///
 ////////////////////////////////////////////////////////
-/**/
+/*
 // Property NAMES
 const properties = Object.keys(openingHours);
 console.log(properties);
@@ -93,7 +93,7 @@ console.log(entries);
 for (const [key, { open, close }] of entries) {
 	console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
-
+*/
 ////////////////////////////////////////////////////////
 ////////////      OPTIONAL CHAINING (?.)    ////////////
 ////////////////////////////////////////////////////////
@@ -145,7 +145,7 @@ for (const [i, el] of menu.entries()) {
 ////////////////////////////////////////////////////////
 ///////////       CODING CHALLENGE N°1       ///////////
 ////////////////////////////////////////////////////////
-/*
+
 const game = {
 	team1: "Barcelona",
 	team2: "Real Madrid",
@@ -178,7 +178,7 @@ const game = {
 		],
 	],
 	score: "4:0",
-	scored: ["Lewandoski", "Fati", "Rafinha", "Lewandowski"],
+	scored: ["Lewandowski", "Fati", "Rafinha", "Lewandowski"],
 	date: "Jul 24th, 2022",
 	odds: {
 		team1: 6.5,
@@ -221,7 +221,32 @@ printGoals(...game.scored);
 team1 < team2 && console.log("Team 2 is more likely to win");
 
 team1 > team2 && console.log("Team 1 is more likely to win");
-*/
+
+////////////////////////////////////////////////////////
+///////            CODING CHALLENGE N°2           //////
+////////////////////////////////////////////////////////
+
+// 1.
+// const scorers = [...game.scored];
+for (const [i, player] of game.scored.entries()) {
+	console.log(`Goal ${i + 1}: ${player}`);
+}
+
+// 2.
+const odds = Object.values(game.odds);
+let average = 0;
+
+for (const odd of odds) {
+	average += odd;
+}
+average /= odds.length;
+console.log(average);
+
+// 3.
+for (const [team, odd] of Object.entries(game.odds)) {
+	const teamStr = team === "x" ? "draw" : `victory ${game[team]}`;
+	console.log(`Odd of ${teamStr} ${odd}`);
+}
 
 ////////////////////////////////////////////////////////
 ///////////    LOGICAL ASSIGNMENT OPERATORS  ///////////
