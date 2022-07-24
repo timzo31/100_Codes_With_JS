@@ -67,6 +67,46 @@ const restaurant = {
 // });
 
 ////////////////////////////////////////////////////////
+/////                    SETS                      /////
+////////////////////////////////////////////////////////
+
+const orderSet = new Set([
+	"Pasta",
+	"Pizza",
+	"Pizza",
+	"Risotto",
+	"Pasta",
+	"Pizza",
+]);
+console.log(orderSet);
+
+console.log(new Set("Timera"));
+
+console.log(orderSet.size);
+console.log(orderSet.has("Pizza"));
+console.log(orderSet.has("Bread"));
+orderSet.add("Garlic Bread");
+orderSet.add("Garlic Bread");
+orderSet.delete("Risotto");
+// orderSet.clear();
+console.log(orderSet);
+
+for (const order of orderSet) {
+	console.log(order);
+}
+
+// Example
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+
+// const staffUnique = new Set(staff);
+// packing
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(new Set(["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"]));
+
+console.log(new Set("TIMERA Mamadou").size);
+
+////////////////////////////////////////////////////////
 /// LOOPING OBJECTS: Object Keys, Values and Entries ///
 ////////////////////////////////////////////////////////
 /*
@@ -145,7 +185,7 @@ for (const [i, el] of menu.entries()) {
 ////////////////////////////////////////////////////////
 ///////////       CODING CHALLENGE N°1       ///////////
 ////////////////////////////////////////////////////////
-
+/*
 const game = {
 	team1: "Barcelona",
 	team2: "Real Madrid",
@@ -221,11 +261,11 @@ printGoals(...game.scored);
 team1 < team2 && console.log("Team 2 is more likely to win");
 
 team1 > team2 && console.log("Team 1 is more likely to win");
-
+*/
 ////////////////////////////////////////////////////////
 ///////            CODING CHALLENGE N°2           //////
 ////////////////////////////////////////////////////////
-
+/*
 // 1.
 // const scorers = [...game.scored];
 for (const [i, player] of game.scored.entries()) {
@@ -247,7 +287,7 @@ for (const [team, odd] of Object.entries(game.odds)) {
 	const teamStr = team === "x" ? "draw" : `victory ${game[team]}`;
 	console.log(`Odd of ${teamStr} ${odd}`);
 }
-
+*/
 ////////////////////////////////////////////////////////
 ///////////    LOGICAL ASSIGNMENT OPERATORS  ///////////
 ////////////////////////////////////////////////////////
