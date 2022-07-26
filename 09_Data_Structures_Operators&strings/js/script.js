@@ -173,7 +173,7 @@ checkBaggage("Got some snacks and a gun for protection.");
 ////////////////////////////////////////////////////////
 /////         WORKING WITH STRINGS: PART 3         /////
 ////////////////////////////////////////////////////////
-
+/*
 // Split and Join
 const s = "My name is TIMERA";
 console.log(s.split(" "));
@@ -226,7 +226,7 @@ const planeInLine = function (n) {
 planeInLine(5);
 planeInLine(3);
 planeInLine(12);
-
+*/
 ////////////////////////////////////////////////////////
 /////             MAPS FUNDAMENTALS                /////
 ////////////////////////////////////////////////////////
@@ -501,6 +501,44 @@ team1 > team2 && console.log("Team 1 is more likely to win");
 */
 
 ////////////////////////////////////////////////////////
+///////            CODING CHALLENGE N°4           //////
+////////////////////////////////////////////////////////
+
+// underscore_case -> underscoreCase
+// first_name -> firstName
+//  Some_Variable -> someVariable
+//   calculate_AGE -> calculateAge
+// delayed_departure -> delayedDeparture
+//
+document.body.append(document.createElement("textarea"));
+document.body.append(document.createElement("button"));
+
+document.querySelector("button").addEventListener("click", function () {
+	const text = document.querySelector("textarea").value;
+	//console.log(text);
+	const rows = text.split("\n");
+	console.log(rows);
+	for (const [i, row] of rows.entries()) {
+		const [first, second] = row.toLocaleLowerCase().trim().split("_");
+		console.log();
+		const output = `${first}${second.replace(
+			second[0],
+			second[0].toUpperCase()
+		)}`;
+		console.log(`${output.padEnd(20)}${"checked".repeat(i + 1)}`);
+
+		// camelSplit = [camelFirstWorld, camelSecondWorld];
+		// console.log(camelSplit);
+		// 	.join("", n[0].toLowerCase() + n[1].toUpperCase());
+		// console.log(camelSplit);
+	}
+});
+
+const camelDisplay = function (words) {};
+
+// camelDisplay(text);
+
+////////////////////////////////////////////////////////
 ///////            CODING CHALLENGE N°3           //////
 ////////////////////////////////////////////////////////
 /*
@@ -599,7 +637,7 @@ console.log(rest1);
 console.log(rest2);
 */
 ////////////////////////////////////////////////////////
-///////////  THE NU LLISH COALESCING OPERATORS  /////////
+///////////  THE NULLISH COALESCING OPERATORS  /////////
 ////////////////////////////////////////////////////////
 /*
 restaurant.numGuests = 0;
