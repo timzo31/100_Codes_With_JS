@@ -109,7 +109,7 @@ console.log(typeof new String("Jonas").slice(1));
 ////////////////////////////////////////////////////////
 /////         WORKING WITH STRINGS: PART 2         /////
 ////////////////////////////////////////////////////////
-
+/*
 const airline = "TAP air Portugal";
 
 console.log(airline.toLowerCase());
@@ -168,6 +168,64 @@ const checkBaggage = function (items) {
 checkBaggage("I have a laptop, some Food and pocket Knife");
 checkBaggage("Shocks and camera");
 checkBaggage("Got some snacks and a gun for protection.");
+*/
+
+////////////////////////////////////////////////////////
+/////         WORKING WITH STRINGS: PART 3         /////
+////////////////////////////////////////////////////////
+
+// Split and Join
+const s = "My name is TIMERA";
+console.log(s.split(" "));
+
+const [firstName, lastName] = "Timera Mamadou".split(" ");
+
+const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
+
+console.log(newName);
+
+const passenger = "jessica an smith davis";
+
+const capitalizeName = function (name) {
+	const names = name.split(" ");
+	let capNames = [];
+	// console.log(names);
+	for (const n of names) {
+		//capNames.push(n[0].toUpperCase() + n.slice(1));
+		capNames.push(n.replace(n[0], n[0].toUpperCase()));
+	}
+	console.log(capNames.join(" "));
+};
+
+capitalizeName(passenger);
+capitalizeName("timera mamadou");
+
+// Padding
+const message = "Go to gate 23";
+console.log(message.padStart(25, "+").padEnd(30, "+"));
+console.log("Timera".padStart(20, "+").padEnd(30, "+"));
+
+const maskCreditCard = function (number) {
+	const str = number + "";
+	const last = str.slice(-4);
+	return last.padStart(str.length, "*");
+};
+
+console.log(maskCreditCard(6232145670903));
+console.log(maskCreditCard(62342453247774490001));
+console.log(maskCreditCard("893162342453247774490001"));
+
+// Repeat
+const message2 = "Bad weather ... All departures Delayed... ";
+console.log(message2.repeat(5));
+
+const planeInLine = function (n) {
+	console.log(`There are ${n} planes in line ${" ".repeat(n)}`);
+};
+
+planeInLine(5);
+planeInLine(3);
+planeInLine(12);
 
 ////////////////////////////////////////////////////////
 /////             MAPS FUNDAMENTALS                /////
