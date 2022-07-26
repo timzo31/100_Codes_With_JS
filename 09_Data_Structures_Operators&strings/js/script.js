@@ -67,6 +67,45 @@ const restaurant = {
 // });
 
 ////////////////////////////////////////////////////////
+/////         WORKING WITH STRINGS: PART 1         /////
+////////////////////////////////////////////////////////
+
+const airline = "Air Senegal";
+const plane = "A320";
+
+console.log(plane[0]);
+console.log(airline.length);
+
+console.log(airline.indexOf("r"));
+console.log(airline.lastIndexOf("e"));
+console.log(airline.indexOf("Senegal"));
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 8));
+
+console.log(airline.slice(0, airline.indexOf(" ")));
+console.log(airline.slice(airline.lastIndexOf(" ")));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+	// B & E are middle seats
+	const s = seat.slice(-1);
+	if (s === "B" || s === "E") console.log("You got the middle seat !!");
+	else console.log("You got lucky!");
+};
+
+checkMiddleSeat("11B");
+checkMiddleSeat("23C");
+checkMiddleSeat("3E");
+
+console.log(new String("Timera"));
+console.log(typeof new String("Jonas"));
+
+console.log(typeof new String("Jonas").slice(1));
+
+////////////////////////////////////////////////////////
 /////             MAPS FUNDAMENTALS                /////
 ////////////////////////////////////////////////////////
 /*
@@ -106,7 +145,7 @@ console.log(rest.get(arr, "Test"));
 ////////////////////////////////////////////////////////
 /////                MAPS ITERATION                /////
 ////////////////////////////////////////////////////////
-
+/*
 const question = new Map([
 	["question", "What is the best programming language in the world?"],
 	[1, "C"],
@@ -141,7 +180,7 @@ console.log([...question]);
 // console.log(question.entries());
 console.log([...question.keys()]);
 console.log([...question.values()]);
-
+*/
 ////////////////////////////////////////////////////////
 /////                    SETS                      /////
 ////////////////////////////////////////////////////////
@@ -337,6 +376,44 @@ printGoals(...game.scored);
 team1 < team2 && console.log("Team 2 is more likely to win");
 
 team1 > team2 && console.log("Team 1 is more likely to win");
+*/
+
+////////////////////////////////////////////////////////
+///////            CODING CHALLENGE N°3           //////
+////////////////////////////////////////////////////////
+/*
+const gameEvents = new Map([
+	[17, "GOAL"],
+	[36, "Substitution"],
+	[47, "GOAL"],
+	[61, "Substitution"],
+	[64, "Yellow card"],
+	[69, "Red card"],
+	[70, "Substitution"],
+	[72, "Substitution"],
+	[76, "GOAL"],
+	[80, "GOAL"],
+	[92, "Yellow card"],
+]);
+
+// 1.
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// 2.
+gameEvents.delete(64);
+
+// 3.
+const time = [...gameEvents.keys()].pop();
+console.log(
+	`An event happened, on average, every ${time / gameEvents.size} minutes`
+);
+
+// 4.
+for (const [min, event] of gameEvents) {
+	const half = min <= 45 ? "FIRST" : "SECOND";
+	console.log(`${half} [HALF] ${min}: ${event}`);
+}
 */
 ////////////////////////////////////////////////////////
 ///////            CODING CHALLENGE N°2           //////
