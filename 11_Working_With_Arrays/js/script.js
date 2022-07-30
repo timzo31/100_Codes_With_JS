@@ -195,7 +195,7 @@ currenciesUnique.forEach(function (value, _, map) {
 //////////////////////////////////////////////////////
 /////////// CHALLLENGE N°1 ////////////////
 //////////////////////////////////////////////////////
-
+/*
 const juliaData = [3, 5, 2, 12, 7];
 const kateData = [10, 5, 6, 1, 4];
 
@@ -206,7 +206,7 @@ const checkDogs = function (data1, data2) {
   // dogsJulia.slice(1, 3);
 
   const dogs = dogsJuliaCorrected.concat(data2);
-  console.log(dogs);
+  //console.log(dogs);
 
   dogs.forEach((dog, i) => {
     if (dog >= 3) {
@@ -219,3 +219,39 @@ const checkDogs = function (data1, data2) {
   });
 };
 checkDogs(juliaData, kateData);
+*/
+
+//////////////////////////////////////////////////////
+/////////// THE MAP METHOD ////////////////
+//////////////////////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const euroToUSD = 1.1;
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * euroToUSD;
+// });
+const movementsUSD = movements.map(mov => mov * euroToUSD);
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+
+for (const mov of movements) {
+  movementsUSDfor.push(mov * euroToUSD);
+}
+console.log(movementsUSDfor);
+
+const movementsDescriptions = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You deposit ${
+      mov > 0 ? 'Deposit' : 'Withdrew'
+    } ${Math.abs(mov)}`
+);
+/* if (mov > 0) {
+  //   return `Movement ${i + 1}: You deposit ${mov}`;
+  // } else {
+  //   return `Mouvement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+   }
+//});*/
+console.log(movementsDescriptions);
