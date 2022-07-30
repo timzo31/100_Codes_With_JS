@@ -255,3 +255,23 @@ const movementsDescriptions = movements.map(
    }
 //});*/
 console.log(movementsDescriptions);
+
+//////////////////////////////////////////////////////
+/////////// COMPUTING USERNAMES ////////////////
+//////////////////////////////////////////////////////
+
+const user1 = 'Timera Mamadou';
+
+const createUsernames = function (accs) {
+  accs.forEach(
+    acc =>
+      (acc.username = acc.owner
+        .toLowerCase()
+        .split(' ')
+        .map(name => name[0])
+        .join(''))
+  );
+};
+
+createUsernames(accounts);
+console.log(accounts);
