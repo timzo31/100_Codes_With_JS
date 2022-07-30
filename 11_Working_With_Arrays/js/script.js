@@ -61,15 +61,35 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+//////////////////////////////////////////////////////
+///////////       BANKIST APP         ////////////////
+//////////////////////////////////////////////////////
+
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
+
+  movements.forEach((mov, i) => {
+    const type = mov > 0 ? 'Deposit' : 'Withdrawal';
+
+    const html = `
+    <div class="movements__row">
+      <div class="movements__type movements__type--${type}">
+      ${i + 1} ${type}
+      </div>
+      <div class="movements__value">${mov}€</div>
+    </div>
+    `;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);
+
+//console.log(containerMovements.innerHTML);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -104,8 +124,9 @@ console.log([...arr, ...arr2]);
 
 // JOIN
 console.log(letters.join(' - '));
-*/
+//*/
 
+/*
 // const arr = [23, 11, 64];
 // console.log(arr[0]);
 // console.log(arr.at(0));
@@ -117,7 +138,11 @@ console.log(letters.join(' - '));
 
 // // At with Strings
 // console.log('Timera'.at(3));
-
+*/
+//////////////////////////////////////////////////////
+///////////// LOOPING ARRAYS: FOREACH ////////////////
+//////////////////////////////////////////////////////
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 console.log('-------- FOR OF ----------');
@@ -143,3 +168,54 @@ movements.forEach(function (mov) {
     console.log(`You withdrew ${Math.abs(mov)}`);
   }
 });
+*/
+//////////////////////////////////////////////////////
+/////////// FOREACH WITH MAPS ET SETS ////////////////
+//////////////////////////////////////////////////////
+/*
+console.log(`---------- FOREACH with Maps and Sets ------------`);
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach((value, key, map) => {
+  console.log(`${key}: ${value}`);
+});
+
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+currenciesUnique.forEach(function (value, _, map) {
+  console.log(`${value}: ${value}`);
+});
+*/
+
+//////////////////////////////////////////////////////
+/////////// CHALLLENGE N°1 ////////////////
+//////////////////////////////////////////////////////
+
+const juliaData = [3, 5, 2, 12, 7];
+const kateData = [10, 5, 6, 1, 4];
+
+const checkDogs = function (data1, data2) {
+  const dogsJuliaCorrected = data1.slice();
+  dogsJuliaCorrected.splice(0, 1);
+  dogsJuliaCorrected.splice(-2);
+  // dogsJulia.slice(1, 3);
+
+  const dogs = dogsJuliaCorrected.concat(data2);
+  console.log(dogs);
+
+  dogs.forEach((dog, i) => {
+    if (dog >= 3) {
+      console.log(
+        `Dog number ${i + 1} is an an adult , and is ${dog} years old`
+      );
+    } else {
+      console.log(`Dog number ${i + 1} is still a puppy`);
+    }
+  });
+};
+checkDogs(juliaData, kateData);
