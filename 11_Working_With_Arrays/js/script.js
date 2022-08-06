@@ -224,6 +224,7 @@ checkDogs(juliaData, kateData);
 //////////////////////////////////////////////////////
 /////////// THE MAP METHOD ////////////////
 //////////////////////////////////////////////////////
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const euroToUSD = 1.1;
@@ -253,13 +254,13 @@ const movementsDescriptions = movements.map(
   // } else {
   //   return `Mouvement ${i + 1}: You withdrew ${Math.abs(mov)}`;
    }
-//});*/
+//});///*
 console.log(movementsDescriptions);
-
+*/
 //////////////////////////////////////////////////////
 /////////// COMPUTING USERNAMES ////////////////
 //////////////////////////////////////////////////////
-
+/*
 const user1 = 'Timera Mamadou';
 
 const createUsernames = function (accs) {
@@ -275,3 +276,27 @@ const createUsernames = function (accs) {
 
 createUsernames(accounts);
 console.log(accounts);
+*/
+//////////////////////////////////////////////////////
+/////////// THE FILTER METHOD ////////////////
+//////////////////////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// Filter Method
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(deposits);
+
+// With For loop
+const depositsFor = [];
+for (const mov of movements) {
+  if (mov > 0) {
+    depositsFor.push(mov);
+  }
+}
+console.log(depositsFor);
+
+// Array of withdrawals with arrow filter function
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
