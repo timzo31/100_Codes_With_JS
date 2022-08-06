@@ -399,3 +399,24 @@ const totalDepositsUSD = movements
   .reduce((acc, cur) => acc + cur, 0);
 
 console.log(Math.trunc(totalDepositsUSD));
+
+//////////////////////////////////////////////////////
+/////////// THE FIND METHOD /////////////
+//////////////////////////////////////////////////////
+
+// Find: loops through the array and retrieve an element, return only the first element of it.
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(firstWithdrawal);
+
+// Difference between Find and Filter: filter returns all elements that match the condition in a new array, while Find returns only the first element andnot an array.
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+
+// With ForOf Loop
+for (const acc of accounts) {
+  if (acc.owner === 'Jessica Davis') {
+    console.log(acc);
+  }
+}
