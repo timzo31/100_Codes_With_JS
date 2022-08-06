@@ -600,10 +600,10 @@ console.log(averallBalanceChain2);
 
 // Strings
 const owners = ['Timera', 'Jonas', 'Martha', 'Niuma', 'Jessica'];
-console.log(owners.sort());
+//console.log(owners.sort());
 
 // Numbers
-console.log(movements);
+//console.log(movements);
 
 // return < 0, A, B (Keep order)
 // return > 0, B, A (Switch order)
@@ -613,7 +613,7 @@ console.log(movements);
 //   if (b > a) return -1;
 // });
 movements.sort((a, b) => a - b);
-console.log(movements);
+//console.log(movements);
 
 // Descending order
 // movements.sort((a, b) => {
@@ -622,3 +622,40 @@ console.log(movements);
 // });
 movements.sort((a, b) => b - a);
 console.log(movements);
+
+////////////////////////////////////////////////
+///////////  MORE WAYS TO CREATE ARRAYS ////////
+
+const arr2 = [1, 2, 3, 4, 5, 6, 7];
+
+const x = new Array(7);
+console.log(x);
+
+x.fill(1, 3, 5);
+console.log(x);
+
+arr2.fill(23, 2, 6);
+console.log(arr2);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+// 100 random integers array list
+const randArray = Array.from({ length: 100 }, () =>
+  Math.floor(Math.random() * 101)
+);
+console.log(randArray);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+
+  const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+});
