@@ -65,8 +65,10 @@ const inputClosePin = document.querySelector('.form__input--pin');
 ///////////       BANKIST APP         ////////////////
 //////////////////////////////////////////////////////
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
 
   movements.forEach((mov, i) => {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
@@ -190,7 +192,7 @@ btnTransfer.addEventListener('click', function (e) {
   updateUI(currentAccount);
 });
 
-//////////////////////////////////////////////////////
+////////////////////////////////////////////////////
 /////////////    REQUEST LOAN    ///////////////
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
@@ -207,8 +209,8 @@ btnLoan.addEventListener('click', function (e) {
   inputLoanAmount.value = '';
 });
 
-//////////////////////////////////////////////////////
-/////////////      THE FindIndex METHOD     ////////////////
+///////////////////////////////////////////////////
+/////////////  THE FindIndex METHOD  //////////////
 
 btnClose.addEventListener('click', e => {
   e.preventDefault();
@@ -233,8 +235,8 @@ btnClose.addEventListener('click', e => {
   inputCloseUsername.value = inputClosePin.value = '';
 });
 
-//////////////////////////////////////////////////////
-/////////////      THE SOME AND EVERY METHOD     /////////////
+////////////////////////////////////////////////
+///////////   THE SOME AND EVERY METHOD   //////
 
 const movements2 = [200, 450, -400, 3000, -650, -130, 70, 1300];
 console.log(movements2);
@@ -255,6 +257,16 @@ const deposit = mov => mov > 0;
 console.log(movements2.some(deposit));
 console.log(movements2.every(deposit));
 console.log(movements2.filter(deposit));
+
+////////////////////////////////////////////////
+///////////   ARRAY SORTING          ///////////
+
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
 
 //console.log(containerMovements.innerHTML);
 
@@ -581,3 +593,32 @@ const averallBalanceChain2 = accounts
   .reduce((acc, mov) => acc + mov, 0);
 
 console.log(averallBalanceChain2);
+
+/////////////////////////////////////////////////////
+/////////// SORTING ARRAYS /////////////
+/////////////////////////////////////////////////////
+
+// Strings
+const owners = ['Timera', 'Jonas', 'Martha', 'Niuma', 'Jessica'];
+console.log(owners.sort());
+
+// Numbers
+console.log(movements);
+
+// return < 0, A, B (Keep order)
+// return > 0, B, A (Switch order)
+// Ascending order
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (b > a) return -1;
+// });
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Descending order
+// movements.sort((a, b) => {
+//   if (a > b) return -1;
+//   if (a < b) return 1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements);
