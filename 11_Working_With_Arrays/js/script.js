@@ -546,3 +546,38 @@ const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 //     console.log(acc);
 //   }
 // }
+
+//////////////////////////////////////////////////////
+/////////// THE FLAT AND FLATMAP METHODS /////////////
+//////////////////////////////////////////////////////
+
+// FLAP
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+// Falt Method: Group arrays into one big array
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+// const accountMovements = accounts.map(acc => acc.movements);
+
+// console.log(accountMovements);
+// const allMovements = accountMovements.flat();
+// console.log(allMovements);
+
+// const averallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+// console.log(averallBalance);
+
+const averallBalanceChain = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(averallBalanceChain);
+
+// FLATMAP
+const averallBalanceChain2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(averallBalanceChain2);
