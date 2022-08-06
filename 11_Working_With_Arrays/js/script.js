@@ -69,7 +69,7 @@ const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
 
   movements.forEach((mov, i) => {
-    const type = mov > 0 ? 'Deposit' : 'Withdrawal';
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
     <div class="movements__row">
@@ -84,6 +84,24 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(
+    acc =>
+      (acc.username = acc.owner
+        .toLowerCase()
+        .split(' ')
+        .map(name => name[0])
+        .join(''))
+  );
+};
+createUsernames(accounts);
 
 //console.log(containerMovements.innerHTML);
 
@@ -300,3 +318,39 @@ console.log(depositsFor);
 // Array of withdrawals with arrow filter function
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+
+//////////////////////////////////////////////////////
+/////////// THE REDUCE METHOD ////////////////
+//////////////////////////////////////////////////////
+
+// accumulator => SNOWBALL
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i}: ${acc}`);
+  return acc + cur;
+}, 0);
+console.log(balance);
+
+// Balance Using the reduce method with arrow function
+const balanceArr = movements.reduce((acc, cur) => acc + cur, 0);
+console.log(balanceArr);
+
+// Balance with a For Loop
+let balance2 = 0;
+for (const mov of movements) {
+  balance2 += mov;
+}
+console.log(balance2);
+
+// Maximum value with REDUCE METHOD
+const max = movements.reduce((acc, cur) => {
+  if (acc > cur) return acc;
+  else return cur;
+}, movements[0]);
+console.log(max);
+
+// Max valu with Arrow REDUCE Method
+const max2 = movements.reduce(
+  (acc, cur) => (acc > cur ? acc : cur),
+  movements[0]
+);
+console.log(max);
