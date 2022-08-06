@@ -57,3 +57,16 @@ const calcAverageHumanAge = function (ages) {
 const avg1 = calcAverageHumanAge(dogs);
 const avg2 = calcAverageHumanAge(dogs2);
 console.log(avg1, avg2);
+
+//////////////////////////////////////////////////////
+///////////      CHALLENGE N°3        ////////////////
+//////////////////////////////////////////////////////
+
+const calcAverageHumanAgeChain = ages =>
+  ages
+    .map(age => (age < 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
+const avgChain1 = calcAverageHumanAgeChain(dogs);
+console.log(avgChain1);
