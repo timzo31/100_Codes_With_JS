@@ -191,6 +191,26 @@ btnTransfer.addEventListener('click', function (e) {
 });
 
 //////////////////////////////////////////////////////
+/////////////    REQUEST LOAN    ///////////////
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (
+    amount > 0 &&
+    currentAccount.mouvements.some(mov => mov >= amount * 0.1)
+  ) {
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
+//////////////////////////////////////////////////////
 /////////////      THE FindIndex METHOD     ////////////////
 
 btnClose.addEventListener('click', e => {
@@ -216,13 +236,34 @@ btnClose.addEventListener('click', e => {
   inputCloseUsername.value = inputClosePin.value = '';
 });
 
+//////////////////////////////////////////////////////
+/////////////      THE SOME AND EVERY METHOD     /////////////
+
+const movements2 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements2);
+
+// EQUALITY
+console.log(movements2.includes(-130));
+
+// SOME: CONDITION
+const anyDeposits = movements2.some(mov => mov > 5000);
+console.log(anyDeposits);
+
+// EVERY
+console.log(movements2.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Separate Callback
+const deposit = mov => mov > 0;
+console.log(movements2.some(deposit));
+console.log(movements2.every(deposit));
+console.log(movements2.filter(deposit));
+
 //console.log(containerMovements.innerHTML);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 /*
@@ -437,11 +478,11 @@ console.log(withdrawals);
 //////////////////////////////////////////////////////
 
 // accumulator => SNOWBALL
-const balance = movements.reduce(function (acc, cur, i, arr) {
-  console.log(`Iteration ${i}: ${acc}`);
-  return acc + cur;
-}, 0);
-console.log(balance);
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + cur;
+// }, 0);
+// console.log(balance);
 
 // Balance Using the reduce method with arrow function
 const balanceArr = movements.reduce((acc, cur) => acc + cur, 0);
@@ -466,7 +507,7 @@ const max2 = movements.reduce(
   (acc, cur) => (acc > cur ? acc : cur),
   movements[0]
 );
-console.log(max2);
+//console.log(max2);
 
 //////////////////////////////////////////////////////
 /////////// THE MAGIC OF CHAINING METHOD /////////////
@@ -486,7 +527,7 @@ const totalDepositsUSD = movements
   })
   .reduce((acc, cur) => acc + cur, 0);
 
-console.log(Math.trunc(totalDepositsUSD));
+//console.log(Math.trunc(totalDepositsUSD));
 
 //////////////////////////////////////////////////////
 /////////// THE FIND METHOD /////////////
@@ -500,7 +541,7 @@ console.log(firstWithdrawal);
 console.log(accounts);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
-console.log(account);
+//console.log(account);
 
 // With ForOf Loop
 // for (const acc of accounts) {
