@@ -659,3 +659,69 @@ labelBalance.addEventListener('click', function () {
 
   const movementsUI2 = [...document.querySelectorAll('.movements__value')];
 });
+
+/////////////////////////////////////////////
+/////// ARRAY METHODS PRACTICE    ///////
+////////////////////////////////////////////
+
+// 1.
+// const bankDepositSum = accounts.map(acc => acc.movements).flat();
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0);
+
+console.log(bankDepositSum);
+
+// 2.
+// a. First way of getting the number of Deposits greater than 1000.
+// const numDeposits1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov > 1000).length;
+
+// console.log(numDeposits1000);
+
+// b.First way of getting the number of Deposits greater than 1000.
+const numDeposits1000 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
+
+console.log(numDeposits1000);
+
+// Prefixed ++ operator
+let a = 10;
+console.log(++a);
+console.log(a);
+
+// 3. Create an Object that contains the sumof the Deposits and the Withdrawals
+const { depos, withdraws } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.depos += cur) : (sums.withdraws += cur);
+      sums[cur > 0 ? 'depos' : 'withdraws'] += cur;
+      return sums;
+    },
+    { depos: 0, withdraws: 0 }
+  );
+
+console.log(depos, withdraws);
+
+// 4. Convert a string to Capitalized words
+const convertTitleCase = function (str) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+  const capitalizedTitle = str
+    .toLowerCase()
+    .split(' ')
+    .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(' ');
+  return capitalize(capitalizedTitle);
+};
+
+const string1 = 'I am a confirmed web developper.';
+const string2 = 'This is a LONG title but not too long';
+console.log(convertTitleCase(string1));
+console.log(convertTitleCase(string2));

@@ -70,3 +70,7 @@ const calcAverageHumanAgeChain = ages =>
 
 const avgChain1 = calcAverageHumanAgeChain(dogs);
 console.log(avgChain1);
+
+/////////////////////////////////////////////
+///////////    CHALLENGE N°4   //////////////
+////////////////////////////////////////////
