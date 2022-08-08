@@ -378,3 +378,29 @@ console.log(parseInt('230000'));
 
 ////////////////////////////////////
 //////   Working with BIGINT   /////
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+
+console.log(4802833000000000033244322443n);
+console.log(BigInt(480283300000000));
+
+// Operations
+// We cannot mix bigInt with ather number
+console.log(10000n + 10000n);
+
+const huge = 2002020349000234442023323n;
+
+// Exceptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n === typeof 20);
+
+console.log(huge + ' is REALLY big!!!');
+
+// Divisions
+console.log(11n / 3n);
+console.log(10 / 3);
