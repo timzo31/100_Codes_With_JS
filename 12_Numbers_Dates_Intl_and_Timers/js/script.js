@@ -189,14 +189,43 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+// COUNTDOWN TIMER LOGOUT FUNCTION
+
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+    // In each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
+
+    // When 0 seconds, stop timer and logout user
+    if (time === 0) {
+      clearInterval(timer);
+
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = '0';
+    }
+    // Decrease 1s
+    time--;
+  };
+
+  // set time to 5min
+  let time = 30;
+
+  // Call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
+
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 // FAKE ALWAYS LOGGED IN
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = '1';
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = '1';
 ///////////////////////////////////
 //// INTERNATIONALIZING DATES /////
 
@@ -237,9 +266,6 @@ btnLogin.addEventListener('click', function (e) {
 
     const locale = navigator.language;
 
-    // labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(
-    //   now
-    // );
     labelDate.textContent = new Intl.DateTimeFormat(
       currentAccount.locale,
       options
@@ -248,6 +274,11 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    // Timer
+    if (timer) clearInterval(timer);
+
+    timer = startLogOutTimer();
 
     // Update UI
     updateUI(currentAccount);
@@ -278,6 +309,10 @@ btnTransfer.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
+
+    // Reset the Timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -297,6 +332,10 @@ btnLoan.addEventListener('click', function (e) {
       // Update UI
       updateUI(currentAccount);
     }, 2500);
+
+    // Reset the Timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
   inputLoanAmount.value = '';
 });
@@ -565,10 +604,7 @@ const locale = navigator.language;
 // labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(
 //   now
 // );
-labelDate.textContent = new Intl.DateTimeFormat(
-  currentAccount.locale,
-  option
-).format(now);
+labelDate.textContent = new Intl.DateTimeFormat(locale, option).format(now);
 
 ////////////////////////////////////
 //// INTERNATIONALIZING NUMBERS ////
@@ -615,3 +651,6 @@ setInterval(function () {
   const second = now.getSeconds();
   // console.log(`${hour}:${minute}:${second}`);
 }, 100000);
+
+//////////////////////////////////////////
+//// IMPLEMENTING A COUNTDOWN TIMER   ////
