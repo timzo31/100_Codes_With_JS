@@ -182,7 +182,7 @@ getCountryData('australia');
 
 ///////////////////////////////////
 /// THE EVENT LOOP IN PRACTICE ////
-
+/*
 console.log('Test start');
 setTimeout(() => console.log('0 sec timer'), 0);
 Promise.resolve('Reserve promise 1').then(res => console.log(res));
@@ -193,3 +193,53 @@ Promise.resolve('Resolve promise 2').then(res => {
 });
 
 console.log('Test end');
+*/
+///////////////////////////////////
+/// THE EVENT LOOP IN PRACTICE ////
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log(`Lotter draw is happening`);
+  setTimeout(() => {
+    if (Math.random() >= 0.5) {
+      resolve('You WIN');
+    } else {
+      reject('You lost your money');
+    }
+  }, 2000);
+});
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+
+// Promisifying setTimeout
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout((resolve, seconds * 1000));
+  });
+};
+
+wait(1)
+  .then(() => {
+    console.log('1 second passed');
+    return wait(1);
+  })
+  .then(() => console.log('2 second passed'))
+  .then(() => console.log('3 second passed'))
+  .then(() => console.log('4 second passed'));
+
+/*
+  setTimeout(() => {
+    console.log('1 second passed');
+    setTimeout(() => {
+      console.log('2 second passed');
+      setTimeout(() => {
+        console.log('3 second passed');
+        setTimeout(() => {
+          console.log('4 second passed');
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  }, 1000);
+  */
+
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject(new Error('Problem!')).catch(x => console.error(x));
