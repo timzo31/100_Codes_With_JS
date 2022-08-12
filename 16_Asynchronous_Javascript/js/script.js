@@ -4,7 +4,7 @@ const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
-
+/*
 const renderCountry = function (data, className = '') {
   const html = `
   <article class="country ${className}">
@@ -28,7 +28,7 @@ const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
   // countriesContainer.style.opacity = '1';
 };
-
+*/
 /*
 const getCountryAndNeighbors = function (country) {
   // AJAX Call country 1
@@ -180,6 +180,30 @@ btn.addEventListener('click', function () {
 getCountryData('australia');
 */
 
+const renderCountry = function (data, className = '') {
+  const html = `
+  <article class="country ${className}">
+    <img class="country__img" src="${data.flags.svg}" />
+    <div class="country__data">
+      <h3 class="country__name">${data.name.common}</h3>
+      <h4 class="country__region">${data.region}</h4>
+      <p class="country__row"><span>👫</span>${(
+        +data.population / 1000000
+      ).toFixed(1)}</p>
+      <p class="country__row"><span>🗣️</span>${data.languages.name}</p>
+      <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+    </div>
+  </article>
+`;
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = '1';
+};
+
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = '1';
+};
+
 ///////////////////////////////////
 /// THE EVENT LOOP IN PRACTICE ////
 /*
@@ -196,7 +220,7 @@ console.log('Test end');
 */
 ///////////////////////////////////
 /// THE EVENT LOOP IN PRACTICE ////
-
+/*
 const lotteryPromise = new Promise(function (resolve, reject) {
   console.log(`Lotter draw is happening`);
   setTimeout(() => {
@@ -225,7 +249,7 @@ wait(1)
   .then(() => console.log('2 second passed'))
   .then(() => console.log('3 second passed'))
   .then(() => console.log('4 second passed'));
-
+*/
 /*
   setTimeout(() => {
     console.log('1 second passed');
@@ -240,6 +264,57 @@ wait(1)
     }, 1000);
   }, 1000);
   */
-
+/*
 Promise.resolve('abc').then(x => console.log(x));
 Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+*/
+/////////////////////////////////////
+// Promisifying the Geolocation App//
+
+navigator.geolocation.getCurrentPosition(
+  position => console.log(position),
+  err => console.error(err)
+);
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject((err))
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+getPosition().then(pos => console.log(pos));
+
+//////////////// PREV LECTURE //////////////
+
+const whereAmI = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+
+      const url = `https://geocode.xyz/${lat},${lng}?geoit=json`;
+      return fetch(url);
+    })
+    .then(res => {
+      if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      console.log(data);
+      console.log(`You are in ${data.city}, ${data.country}`);
+
+      return fetch(`https://restcountries.com/v3.1/name/${data.country}`);
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`Country not Found! ${res.status}`);
+      }
+      return res.json();
+    })
+    .then(data => renderCountry(data[0]))
+    .catch(err => console.log(`${err.message}!`));
+};
+
+btn.addEventListener('click', whereAmI);
