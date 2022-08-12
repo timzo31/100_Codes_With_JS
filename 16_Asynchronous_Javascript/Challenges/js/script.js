@@ -16,7 +16,7 @@ const renderCountry = function (data, className = '') {
         +data.population / 1000000
       ).toFixed(1)}</p>
       <p class="country__row"><span>🗣️</span>${data.languages.name}</p>
-      <p class="country__row"><span>💰</span>${data.currencies.EUR.name}</p>
+      <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
     </div>
   </article>
 `;
@@ -31,7 +31,8 @@ const renderError = function (msg) {
 
 ////////////////////////////////////
 const whereAmI = function (lat, lng) {
-  fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+  const url = `https://geocode.xyz/${lat},${lng}?geoit=json`;
+  fetch(url)
     .then(res => {
       if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
       return res.json();
@@ -44,18 +45,34 @@ const whereAmI = function (lat, lng) {
     })
     .then(res => {
       if (!res.ok) {
-        throw new Error(`Country not Found! (${res.status})`);
+        throw new Error(`Country not Found! ${res.status}`);
       }
       return res.json();
     })
-    .then(data => renderCountry(data[0]))
-    .catch(err => console.log(`${err.message} !`));
+    .then(data => {
+      renderCountry(data[0]);
+      console.log(data[0]);
+    })
+    .catch(err => console.log(`${err}!`));
 };
 
 whereAmI(52.508, 13.381);
-whereAmI(19.037, 72.873);
-whereAmI(-33.933, 18.474);
 
 // btn.addEventListener('click', function () {
 //   whereAmI();
 // });
+
+/*
+const whereAmI = function (lat, lng) {
+  const url = `https://geocode.xyz/${lat},${lng}?geoit=json`;
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      console.log(`You are in ${data.city} at ${data.region}`);
+    });
+};
+
+whereAmI(13.102, -12.308);
+*/
+///////////////////////////////////

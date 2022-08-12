@@ -144,7 +144,7 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
 //       countriesContainer.style.opacity = '1';
 //     });
 // };
-
+/*
 const getCountryData = function (country) {
   getJSON(
     `https://restcountries.com/v3.1/name/${country}`,
@@ -178,3 +178,18 @@ btn.addEventListener('click', function () {
 });
 
 getCountryData('australia');
+*/
+
+///////////////////////////////////
+/// THE EVENT LOOP IN PRACTICE ////
+
+console.log('Test start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('Reserve promise 1').then(res => console.log(res));
+
+Promise.resolve('Resolve promise 2').then(res => {
+  for (let i = 0; i < 100000000; i++) {}
+  console.log(res);
+});
+
+console.log('Test end');
